@@ -1,0 +1,3 @@
+* just for loop...
+* at the first time, I used the string append string, the runtime is 20ms.
+* the second time, change to the array append element, at last transform array to string, the runtime is 16ms
