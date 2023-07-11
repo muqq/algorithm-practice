@@ -24,6 +24,10 @@ protocol Queue {
     /// Clears the queue.
     
     func clear() -> Void
+
+    var isEmpty: Bool { get }
+
+    var count: Int { get }
 }
 
 class PriorityQueue<T: Comparable>: Queue {
@@ -44,6 +48,14 @@ class PriorityQueue<T: Comparable>: Queue {
   
   public init() {
     self.queue = Array<DataType>()
+  }
+
+  var isEmpty: Bool {
+    return queue.isEmpty
+  }
+
+  var count: Int {
+    return queue.count
   }
   
   /// Inserts a new item into the queue.
@@ -67,7 +79,10 @@ class PriorityQueue<T: Comparable>: Queue {
   }
   
   private func heapifyDown() -> DataType? {
-    guard queue.count > 1 else { return queue.first }
+    guard queue.count > 1 else { 
+      let item = queue.removeFirst()
+      return item
+    }
     let popItem = queue[0]
     queue[0] = queue.removeLast()
     
